@@ -24,16 +24,25 @@ function getValue(){
     let person = prompt("Please enter a number", "16");
     console.log(person);
 }
+function RandomColor(){
+    const r = Math.floor(Math.random()*256);
+    const g = Math.floor(Math.random()*256);
+    const b = Math.floor(Math.random()*256);
+
+    return ("rgb(" + r + "," + g + "," + b + ")");
+
+}
 
 const btnStart = document.querySelector('#start');
 btnStart.addEventListener('click',()=>
     {
+      
         clearGrid();
         
         createGrid(prompt("Please enter a number", "16"));
 
         container.addEventListener("mouseover",function(e){
-            e.target.style.background = 'blue';
+            e.target.style.background = RandomColor();
         })
     });
 

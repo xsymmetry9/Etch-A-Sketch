@@ -11,14 +11,33 @@ function createGrid(total){
     };
     container.style.cssText = "grid-template-columns: repeat("+total+", 1fr);"
 };
-
+//const grid = container.querySelectorAll("grid");
 function clearGrid(){
-    const grid = container.querySelectorAll("grid");
+    let grid = container.querySelectorAll("grid");
     for(var i = 0; i< grid.length; i++){
         grid[i].remove();
     }
     //return grid.length;
 }
 
+function getValue(){
+    let person = prompt("Please enter a number", "16");
+    console.log(person);
+}
 
-createGrid(6);
+const btnStart = document.querySelector('#start');
+btnStart.addEventListener('click',()=>
+    {
+        clearGrid();
+        
+        createGrid(prompt("Please enter a number", "16"));
+
+        container.addEventListener("mouseover",function(e){
+            e.target.style.background = 'blue';
+        })
+    });
+
+const btnReset = document.querySelector('#reset');
+btnReset.addEventListener('click', ()=>{
+    clearGrid();
+})

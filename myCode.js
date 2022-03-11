@@ -13,8 +13,11 @@ function createGrid(total){
 };
 
 function clearGrid(){
-    const grid = document.querySelectorAll('grid');
-    grid.remove();
+    const grid = container.querySelectorAll("grid");
+    for(var i = 0; i< grid.length; i++){
+        grid[i].remove();
+    }
+    //return grid.length;
 }
 
 

@@ -1,11 +1,10 @@
 const container = document.getElementById('container');
 const btnReset = document.querySelector('#reset');
-const color = 'blue';
+var color = RandomColor();
 
-function createGrid(total,color){
-    container.style.cssText = `grid-template-columns: repeat(${total},1fr)`;
-    //Can't plot rows...
-    container.style.cssText = `grid-template-rows: repeat(${total},1fr)`;
+function createGrid(total){
+    container.style.gridTemplateColumns = `repeat(${total},1fr)`;
+    container.style.gridTemplateRows = `repeat(${total},1fr)`;
 
     let gridNumber = total * total;
     for (let i = 1; i <=gridNumber; i++){
@@ -38,16 +37,18 @@ function RandomColor(){
 }
 //Buttons functionality
 const btns = document.querySelectorAll('button');
+const blackbtn = document.getElementById('black');
+const randomColorbtn = document.getElementById('RandomColor'); 
 btns.forEach((button) => {
     button.addEventListener('click',()=>{
         //alert(button.id);
         if (button.id === "black")
         {
-            color = ("black");
+            color = "black";
         }
         else if (button.id ==="RandomColor")
         {
-            color = randomColor();
+            color = RandomColor();
         }
         else if (button.id === "reset")
         {
@@ -63,4 +64,5 @@ const slider = document.getElementById('sizeSlider');
 const sizeValue = document.getElementById('sizeValue');
 slider.oninput = function(){
     createGrid(this.value);
+    sizeValue.innerHTML = `${this.value} x ${this.value}`;
 }

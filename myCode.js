@@ -59,9 +59,8 @@ btns.forEach((button) => {
 //btnReset.addEventListener('click', clearGrid);
 
 //Create a slider that returns the total columns x gridx
-/*const slider = document.getElementById('sizeSlider');
+const slider = document.getElementById('sizeSlider');
 const sizeValue = document.getElementById('sizeValue');
 slider.oninput = function(){
     createGrid(this.value);
-    console.log(this.value);
-}*/
+}

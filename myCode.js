@@ -1,34 +1,32 @@
-const container = document.querySelector('#container');
+const container = document.getElementById('container');
 const btnReset = document.querySelector('#reset');
+const color = 'blue';
 
-function createGrid(total){
-    let gridNumber = total * total;
-    for(let row = 0; row<=total-1; row++){
-        for (let col = 0; col<= total - 1; col++){
-            let getSquare = document.createElement('div');
-            getSquare.classList.add('grid');
-            container.append(getSquare);
-            }    
-    };
-    
+function createGrid(total,color){
     container.style.cssText = `grid-template-columns: repeat(${total},1fr)`;
+    //Can't plot rows...
+    container.style.cssText = `grid-template-rows: repeat(${total},1fr)`;
 
+    let gridNumber = total * total;
+    for (let i = 1; i <=gridNumber; i++){
+        let getSquare = document.createElement('div');
+        getSquare.classList.add('grid');
+        container.appendChild(getSquare);
+    }
+    
+    //Use button to choose the color
     let pixel = container.querySelectorAll(".grid");
     pixel.forEach(pixel => pixel.addEventListener('mouseover',function (e){
-        e.target.style.background = RandomColor();
+        e.target.style.background = color;
     }));
 }
-createGrid(16);
+createGrid(10, color);
 // ChangeBackground color to white
 function clearGrid(){
     let grid = container.querySelectorAll(".grid");
     grid.forEach(grid => grid.style.backgroundColor = 'white');
 }
 
-//Ask user 
-function getValue(){
-    return prompt("Please enter a number", "16");
-}
 //Get random Colors
 function RandomColor(){
     const r = Math.floor(Math.random()*256);
@@ -45,29 +43,25 @@ btns.forEach((button) => {
         //alert(button.id);
         if (button.id === "black")
         {
-            return("black");
+            color = ("black");
         }
         else if (button.id ==="RandomColor")
         {
-            return ("randomColor");
+            color = randomColor();
         }
         else if (button.id === "reset")
         {
-            return ("white");
+            clearGrid();
         }
     });
 });
-/*btnStart.addEventListener('click',()=>
-    {
-      
-        clearGrid();
-        
-        createGrid(getValue());
 
-        container.addEventListener("mouseover",function(e){
-            e.target.style.background = RandomColor();
-        })
-    });*/
+//btnReset.addEventListener('click', clearGrid);
 
-
-btnReset.addEventListener('click', clearGrid);
+//Create a slider that returns the total columns x gridx
+/*const slider = document.getElementById('sizeSlider');
+const sizeValue = document.getElementById('sizeValue');
+slider.oninput = function(){
+    createGrid(this.value);
+    console.log(this.value);
+}*/

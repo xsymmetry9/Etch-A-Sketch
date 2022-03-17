@@ -23,3 +23,18 @@ div{
     border: none;
     outline: 1px solid #000;
 }
+.size-value{
+    margin-top: 36px;
+    width: 100%;
+}
+
+.size-Slider{
+    -webkit-appearance: none;
+    background: #fcf3cf;
+    width: 50%;
+    height: 20px;
+    opacity: 2;
+}
+.size-Slider:hover{
+    opacity: 1;
+}

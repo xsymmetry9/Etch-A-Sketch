@@ -1,25 +1,28 @@
 const container = document.getElementById('container');
 const btnReset = document.querySelector('#reset');
 var color = RandomColor();
+var gridValue = 16;
 
-function createGrid(total){
-    container.style.gridTemplateColumns = `repeat(${total},1fr)`;
-    container.style.gridTemplateRows = `repeat(${total},1fr)`;
+//Create grid
+function createGrid(gridValue){
+    container.style.gridTemplateColumns = `repeat(${gridValue},1fr)`;
+    container.style.gridTemplateRows = `repeat(${gridValue},1fr)`;
 
-    let gridNumber = total * total;
+    let gridNumber = gridValue * gridValue;
     for (let i = 1; i <=gridNumber; i++){
         let getSquare = document.createElement('div');
         getSquare.classList.add('grid');
         container.appendChild(getSquare);
     }
-    
-    //Use button to choose the color
-    let pixel = container.querySelectorAll(".grid");
-    pixel.forEach(pixel => pixel.addEventListener('mouseover',function (e){
-        e.target.style.background = color;
-    }));
+
+//Colors the pixel
+let pixel = container.querySelectorAll(".grid");
+pixel.forEach(pixel => pixel.addEventListener('mouseover',function (e){
+    e.target.style.background = color;
+}));
 }
-createGrid(10, color);
+createGrid(10);
+
 // ChangeBackground color to white
 function clearGrid(){
     let grid = container.querySelectorAll(".grid");
@@ -35,11 +38,42 @@ function RandomColor(){
     return ("rgb(" + r + "," + g + "," + b + ")");
 
 }
-//Buttons functionality
 const btns = document.querySelectorAll('button');
+
+function changeColor(e){
+
+    if (e.target.id =="black")
+    {
+        return console.log("black");
+    }
+
+    else if(e.target.id =="RandomColor")
+    {
+        return console.log('random Color')
+    }
+
+    else if(e.target.id == "reset")
+    {
+        return console.log("reset");
+    }
+}
+function getColor(){
+    return changeColor(e);
+}
+
+
+
+//Buttons functionality
 const blackbtn = document.getElementById('black');
+blackbtn.addEventListener('click',changeColor);
+
 const randomColorbtn = document.getElementById('RandomColor'); 
-btns.forEach((button) => {
+randomColorbtn.addEventListener('click', changeColor);
+
+const resetbtn = document.getElementById('reset');
+resetbtn.addEventListener('click',changeColor);
+
+/*btns.forEach((button) => {
     button.addEventListener('click',()=>{
         //alert(button.id);
         if (button.id === "black")
@@ -55,7 +89,7 @@ btns.forEach((button) => {
             clearGrid();
         }
     });
-});
+});*/
 
 //btnReset.addEventListener('click', clearGrid);
 
@@ -63,6 +97,7 @@ btns.forEach((button) => {
 const slider = document.getElementById('sizeSlider');
 const sizeValue = document.getElementById('sizeValue');
 slider.oninput = function(){
-    createGrid(this.value);
+    gridValue = (this.value);
     sizeValue.innerHTML = `${this.value} x ${this.value}`;
+    createGrid(gridValue);
 }

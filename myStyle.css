@@ -5,8 +5,8 @@ body{
 }
 #container{
     border: none;
-    height: 600px;
-    width: 600px;
+    height: 400px;
+    width: 400px;
     display: grid; 
 
 }

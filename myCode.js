@@ -44,17 +44,17 @@ function changeColor(e){
 
     if (e.target.id =="black")
     {
-        return console.log("black");
+        color = ("black");
     }
 
     else if(e.target.id =="RandomColor")
     {
-        return console.log('random Color')
+        color = RandomColor();
     }
 
     else if(e.target.id == "reset")
     {
-        return console.log("reset");
+        return clearGrid();
     }
 }
 function getColor(){
@@ -71,7 +71,7 @@ const randomColorbtn = document.getElementById('RandomColor');
 randomColorbtn.addEventListener('click', changeColor);
 
 const resetbtn = document.getElementById('reset');
-resetbtn.addEventListener('click',changeColor);
+resetbtn.addEventListener('click',changeColor)
 
 /*btns.forEach((button) => {
     button.addEventListener('click',()=>{

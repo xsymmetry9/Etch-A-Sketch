@@ -1,4 +1,4 @@
-const container = document.getElementById('container');
+const container = document.getElementById('game-grid');
 const btnReset = document.querySelector('#reset');
 var color = RandomColor();
 var gridValue = 16;
@@ -10,7 +10,7 @@ function createGrid(gridValue){
 
     let gridNumber = gridValue * gridValue;
     for (let i = 1; i <=gridNumber; i++){
-        let getSquare = document.createElement('div');
+        let getSquare = document.createElement('grid');
         getSquare.classList.add('grid');
         container.appendChild(getSquare);
     }
@@ -62,12 +62,11 @@ function getColor(){
 }
 
 
-
 //Buttons functionality
 const blackbtn = document.getElementById('black');
 blackbtn.addEventListener('click',changeColor);
 
-const randomColorbtn = document.getElementById('RandomColor'); 
+const randomColorbtn = document.getElementById('RandomColor');
 randomColorbtn.addEventListener('click', changeColor);
 
 const resetbtn = document.getElementById('reset');

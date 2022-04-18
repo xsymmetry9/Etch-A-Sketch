@@ -1,28 +1,83 @@
 body{
     display: flex;
     flex-direction: column;
-    align-items: center;
+    text-align: center;
+    margin: 0;
 }
-#container{
+h1{
+  font-family: 'Open Sans', sans-serif;
+    margin-top: 100px;
+    color: rgb(0, 9, 44);
+    font-size: 4rem;
+    font-weight: bold;
+}
+
+grid{
+  outline: 1px solid #000;
+}
+/* Button Section */
+.circle-container{
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    top: 740px;
+    gap: 100px;
+    justify-content: space-between;
+}
+.button-circle{
+  height: 75px;
+  width: 75px;
+  border-radius: 100%;
+  background-color: lightblue;
+  position: relative;
+}
+
+/* Game Section */
+.game-container{
+  display: flex;
+}
+
+#main-section{
+display: flex;
+flex-direction: column;
+background-color: rgb(255, 95, 0);
+width: 100%;
+justify-content: center;
+align-items: center;
+}
+
+/* Game Display property */
+
+.square-red{
+  height: 600px;
+  width: 600px;
+  background-color: rgb(178, 6, 0);
+  border-radius: 20%;
+  margin-bottom: 100px;
+}
+
+.game-square{
+  height: 400px;
+  width: 400px;
+  background-color: rgb(238, 238, 238);
+  position: absolute;
+  margin-top: 130px;
+
+}
+
+#game-grid{
     border: none;
     height: 400px;
     width: 400px;
-    display: grid; 
+    display: grid;
+    outline: 1px solid #000;
+}
 
-}
-h2{
-    text-align: center;
-    margin-top: 36px;
-}
+/* Functinality Section */
 #cont-button{
     margin-bottom: 36px;
 }
-div{
-    margin: 0;
-    padding: 0;
-    border: none;
-    outline: 1px solid #000;
-}
+
 .size-value{
     margin-top: 36px;
     width: 100%;
